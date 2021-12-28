@@ -36,14 +36,14 @@
 *web.xml file
 
 
-  <servlet>
-       <servlet-name>Jersey REST Service</servlet-name>
-       <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+     <servlet>
+           <servlet-name>Jersey REST Service</servlet-name>
+           <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
   
-	<init-param>
-          <param-name> jersey.config.server.provider.package</param-name>
-          <param-value>net.code.ws</param-value>
-     </init-param>
+	  <init-param>
+               <param-name> jersey.config.server.provider.package</param-name>
+               <param-value>net.code.ws</param-value>
+         </init-param>
     
 	  <load-on-startup>1</load-on-startup> 
    </servlet>
@@ -131,7 +131,7 @@
 		return "Student [studentno=" + studentno + ", studentName=" + studentName + ", studentDOB=" + studentDOB
 				+ ", studentDOJ=" + studentDOJ + "]";
 	}
-   }
+    }
 
     **3  Code DAO Class**
 
