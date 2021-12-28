@@ -7,75 +7,44 @@ simple Jersey Rest project to implement the crud operations for the Student tabl
 
 *pom.xml file:
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>net.codejava.ws</groupId>
-  <artifactId>MyWebsite</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+
   <dependencies>
-     <dependency>
-     <groupId>org.glassfish.jersey.containers</groupId>
-     <artifactId>jersey-container-servlet</artifactId>
-     <version>2.29.1</version>
+      <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.29.1</version>
   </dependency>
   <dependency>
-      <groupId>org.glassfish.jersey.inject</groupId>
-      <artifactId>jersey-hk2</artifactId>
-     <version>2.29.1</version>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>2.29.1</version>
   </dependency>
   <dependency>
-        <groupId>org.glassfish.jersey.media</groupId>
-        <artifactId>jersey-media-json-jackson</artifactId>
-        <version>2.29.1</version>
+           <groupId>org.glassfish.jersey.media</groupId>
+           <artifactId>jersey-media-json-jackson</artifactId>
+           <version>2.29.1</version>
    </dependency>
    <dependency>
-    <groupId>org.glassfish.jaxb</groupId>
-    <artifactId>jaxb-runtime</artifactId>
-    <version>2.3.2</version>
+           <groupId>org.glassfish.jaxb</groupId>
+           <artifactId>jaxb-runtime</artifactId>
+           <version>2.3.2</version>
 </dependency>
  </dependencies>   
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>16</release>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-      </plugin>
-    </plugins>
-  </build>
-</project>
+    
 
 
 *web.xml file
 
-
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>MyWebsite</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
-  
   <servlet>
-     <servlet-name>Jersey REST Service</servlet-name>
-     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-     <init-param>
+      <servlet-name>Jersey REST Service</servlet-name>
+      <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+  
+	<init-param>
          <param-name> jersey.config.server.provider.package</param-name>
          <param-value>net.code.ws</param-value>
-      </init-param>
-      <load-on-startup>1</load-on-startup> 
+     </init-param>
+    
+	<load-on-startup>1</load-on-startup> 
    </servlet>
     
     <servlet-mapping>
@@ -361,13 +330,7 @@ Content-Length: 0
   5. Code RESTful Web Services Client Program
   
    pom.xml file:
-  
-  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>net.codejava.ws</groupId>
-  <artifactId>StudentClient</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
+   
 <dependencies>
 
 <dependency>
@@ -395,7 +358,7 @@ Content-Length: 0
  </dependency>
 
 </dependencies>  
-</project>
+
   
   
 *StudentClient.java
