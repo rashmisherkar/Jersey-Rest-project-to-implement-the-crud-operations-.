@@ -55,7 +55,8 @@
    </web-app>
 
 
- **2. Code Domain Model Class
+
+**2. Code Domain Model Class
 
    *Student.java
 
@@ -133,9 +134,9 @@
 	}
     }
 
-    **3  Code DAO Class**
+**3  Code DAO Class**
 
-      *StudentDAO.java
+     *StudentDAO.java
 
         package net.codejava.ws;
 
