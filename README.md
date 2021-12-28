@@ -236,9 +236,9 @@
           return dao.listAll();
       }
   
-    OUTPUT:
-    cmd:
-    curl http://localhost:8080/MyWebsite/rest/student
+  OUTPUT:
+  cmd:
+  curl http://localhost:8080/MyWebsite/rest/student
   
        from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994","studentDOJ":"20/03/2020"},
        {"studentno":1,"studentName":"Shilpa","studentDOB":"08/07/1997","studentDOJ":"04/02/2021"}]
@@ -360,25 +360,25 @@
   
 **StudentClient.java
   
-  package net.codejava.client;
+     package net.codejava.client;
 
-  import javax.ws.rs.client.*;
-  import javax.ws.rs.core.MediaType;
-  import javax.ws.rs.core.Response;
+     import javax.ws.rs.client.*;
+     import javax.ws.rs.core.MediaType;
+     import javax.ws.rs.core.Response;
 
-  import org.glassfish.jersey.client.ClientConfig;
+     import org.glassfish.jersey.client.ClientConfig;
  
-  public class StudentClient {
+     public class StudentClient {
 
-       private static String baseURI = "http://localhost:8080/MyWebsite/rest/student";
+          private static String baseURI = "http://localhost:8080/MyWebsite/rest/student";
   
-     static WebTarget getWebTarget() {
-      ClientConfig config = new ClientConfig();
-      Client client = ClientBuilder.newClient(config);
-      return client.target(baseURI);
+       static WebTarget getWebTarget() {
+       ClientConfig config = new ClientConfig();
+       Client client = ClientBuilder.newClient(config);
+       return client.target(baseURI);
  
-    }  
-     public static void main(String[] args) {
+     }  
+      public static void main(String[] args) {
        //testList();
         //testGet();
     	//testAdd();
@@ -388,16 +388,16 @@
       }
     }
   
-   **To test listing all Student:**
+    **To test listing all Student:**
     
-    static void testList() {
+     static void testList() {
         	WebTarget target = getWebTarget(); 
     	       String response = target.request()
          		.accept(MediaType.APPLICATION_JSON)
          		.get(String.class);
          	
           System.out.println(response);
-    }
+     }
   
   
    **To get specific Student by no:**
