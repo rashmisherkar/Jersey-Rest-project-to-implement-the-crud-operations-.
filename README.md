@@ -325,37 +325,37 @@
    curl -v -X DELETE http://localhost:8080/MyWebsite/rest/student/1
   
   
-   **5. Code RESTful Web Services Client Program
+ **5. Code RESTful Web Services Client Program
   
-    pom.xml file:
+ pom.xml file:
    
-  <dependencies>
+     <dependencies>
 
-  <dependency>
-      <groupId>org.glassfish.jersey.core</groupId>
-      <artifactId>jersey-client</artifactId>
-      <version>2.29.1</version>
-  </dependency>
+     <dependency>
+          <groupId>org.glassfish.jersey.core</groupId>
+          <artifactId>jersey-client</artifactId>
+          <version>2.29.1</version>
+     </dependency>
 
-  <dependency>
-      <groupId>org.glassfish.jersey.inject</groupId>
-      <artifactId>jersey-hk2</artifactId>
-     <version>2.29.1</version>
-   </dependency>
+    <dependency>
+          <groupId>org.glassfish.jersey.inject</groupId>
+          <artifactId>jersey-hk2</artifactId>
+          <version>2.29.1</version>
+     </dependency>
 
- <dependency>
-      <groupId>org.glassfish.jersey.media</groupId>
-      <artifactId>jersey-media-json-jackson</artifactId>
-      <version>2.29.1</version>
-  </dependency>
+    <dependency>
+          <groupId>org.glassfish.jersey.media</groupId>
+          <artifactId>jersey-media-json-jackson</artifactId>
+          <version>2.29.1</version>
+    </dependency>
 
- <dependency>
-     <groupId>org.glassfish.jaxb</groupId>
-     <artifactId>jaxb-runtime</artifactId>
-      <version>2.3.2</version>
-  </dependency>
+   <dependency>
+         <groupId>org.glassfish.jaxb</groupId>
+         <artifactId>jaxb-runtime</artifactId>
+         <version>2.3.2</version>
+     </dependency>
 
-</dependencies>  
+    </dependencies>  
 
   
   
