@@ -55,7 +55,7 @@
    </web-app>
 
 
- 2. Code Domain Model Class
+ **2. Code Domain Model Class
 
    *Student.java
 
@@ -133,20 +133,20 @@
 	}
    }
 
-    3. Code DAO Class
+    **3  Code DAO Class**
 
-    *StudentDAO.java
+      *StudentDAO.java
 
-     package net.codejava.ws;
+        package net.codejava.ws;
 
-       import java.util.ArrayList;
-       import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
-       public class StudentDAO {
-	    private static StudentDAO instance;
-            private static List<Student> data = new ArrayList<>();
+        public class StudentDAO {
+	     private static StudentDAO instance;
+             private static List<Student> data = new ArrayList<>();
     
-       static {
+        static {
     	   data.add(new Student(1,"Rashmi","15/05/1994","20/03/2020"));
     	   data.add(new Student(2,"Shilpa","08/07/1997","04/02/2021"));
         }
@@ -202,11 +202,11 @@
 	
    }
 
-  4. Code CRUD RESTful Web Services Class
+    **4. Code CRUD RESTful Web Services Class
 
       *StudentResource.java
   
-   package net.codejava.ws;
+     package net.codejava.ws;
 
     import java.net.URI;
     import java.net.URISyntaxException;
@@ -223,7 +223,7 @@
     import javax.ws.rs.core.MediaType;
     import javax.ws.rs.core.Response;
 
-   @Path("/student")
+    @Path("/student")
 
      public class StudentResource { 
           private StudentDAO dao = StudentDAO.getInstance();
@@ -236,14 +236,14 @@
           return dao.listAll();
       }
   
-  OUTPUT:
+    OUTPUT:
     cmd:
     curl http://localhost:8080/MyWebsite/rest/student
   
        from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994","studentDOJ":"20/03/2020"},
        {"studentno":1,"studentName":"Shilpa","studentDOB":"08/07/1997","studentDOJ":"04/02/2021"}]
   
-    2....Code RESTful API method for Retrieval (get a specific item):
+     2....Code RESTful API method for Retrieval (get a specific item):
   
         @GET
         @Path("{studentno}")
@@ -255,13 +255,14 @@
         } else {
              return Response.status(Response.Status.NOT_FOUND).build();
         }
-    }
+      }
   
   OUTPUT:
       cmd:
       curl http://localhost:8080/MyWebsite/rest/student/1
    
       from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994"}]
+  
   
   3....Code RESTful API method for Create (add a new student):
   
@@ -323,7 +324,7 @@
    curl -v -X DELETE http://localhost:8080/MyWebsite/rest/student/1
   
   
-   5. Code RESTful Web Services Client Program
+   **5. Code RESTful Web Services Client Program
   
     pom.xml file:
    
@@ -357,8 +358,9 @@
 
   
   
-*StudentClient.java
-   package net.codejava.client;
+**StudentClient.java
+  
+  package net.codejava.client;
 
   import javax.ws.rs.client.*;
   import javax.ws.rs.core.MediaType;
@@ -386,7 +388,7 @@
       }
     }
   
-   ** To test listing all Student:**
+   **To test listing all Student:**
     
     static void testList() {
         	WebTarget target = getWebTarget(); 
@@ -398,7 +400,7 @@
     }
   
   
-   ** To get specific Student by no:**
+   **To get specific Student by no:**
   
   	static void testGet() { 
     	WebTarget target = getWebTarget();
