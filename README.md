@@ -5,7 +5,7 @@
 
    1. Configure Java Dynamic Web Project for RESTful Web Services with Jersey
 
-  *pom.xml file:
+   *pom.xml file:
 
 
     <dependencies>
@@ -55,18 +55,16 @@
    </web-app>
 
 
-2. Code Domain Model Class
+ 2. Code Domain Model Class
 
- *Student.java
+   *Student.java
 
-   package net.codejava.ws;
-
-   public class Student {
+        package net.codejava.ws;
+        public class Student {
 	private int studentno;
 	private String studentName;
 	private String studentDOB;
 	private String studentDOJ;
-	
 	
 	public Student(int studentno) {
 		
@@ -139,22 +137,22 @@
 
     *StudentDAO.java
 
-   package net.codejava.ws;
+     package net.codejava.ws;
 
-    import java.util.ArrayList;
-   import java.util.List;
+       import java.util.ArrayList;
+       import java.util.List;
 
-   public class StudentDAO {
-	  private static StudentDAO instance;
-          private static List<Student> data = new ArrayList<>();
+       public class StudentDAO {
+	    private static StudentDAO instance;
+            private static List<Student> data = new ArrayList<>();
     
-    static {
+       static {
     	   data.add(new Student(1,"Rashmi","15/05/1994","20/03/2020"));
     	   data.add(new Student(2,"Shilpa","08/07/1997","04/02/2021"));
-    }
-    private StudentDAO() {}
+        }
+         private StudentDAO() {}
     
-        public static StudentDAO getInstance() {
+         public static StudentDAO getInstance() {
 		if(instance == null) {
 			 instance = new StudentDAO();
 		}
@@ -204,54 +202,54 @@
 	
    }
 
-4. Code CRUD RESTful Web Services Class
+  4. Code CRUD RESTful Web Services Class
 
       *StudentResource.java
   
-  package net.codejava.ws;
+   package net.codejava.ws;
 
-  import java.net.URI;
-  import java.net.URISyntaxException;
-  import java.util.List;
+    import java.net.URI;
+    import java.net.URISyntaxException;
+    import java.util.List;
 
-  import javax.ws.rs.Consumes;
-  import javax.ws.rs.DELETE;
-  import javax.ws.rs.GET;
-  import javax.ws.rs.POST;
-  import javax.ws.rs.PUT;
-  import javax.ws.rs.Path;
-  import javax.ws.rs.PathParam;
-  import javax.ws.rs.Produces;
-  import javax.ws.rs.core.MediaType;
-  import javax.ws.rs.core.Response;
+    import javax.ws.rs.Consumes;
+    import javax.ws.rs.DELETE;
+    import javax.ws.rs.GET;
+    import javax.ws.rs.POST;
+    import javax.ws.rs.PUT;
+    import javax.ws.rs.Path;
+    import javax.ws.rs.PathParam;
+    import javax.ws.rs.Produces;
+    import javax.ws.rs.core.MediaType;
+    import javax.ws.rs.core.Response;
 
- @Path("/student")
+   @Path("/student")
 
-   public class StudentResource { 
-        private StudentDAO dao = StudentDAO.getInstance();
+     public class StudentResource { 
+          private StudentDAO dao = StudentDAO.getInstance();
    
-  1...Code RESTful API method for Retrieval (list all student):
+    1...Code RESTful API method for Retrieval (list all student):
   
-      @GET
-       @Produces(MediaType.APPLICATION_JSON)
-       public List<Student> list() {
-       return dao.listAll();
-   }
+        @GET
+        @Produces(MediaType.APPLICATION_JSON)
+          public List<Student> list() {
+          return dao.listAll();
+      }
   
   OUTPUT:
-  cmd:
-  curl http://localhost:8080/MyWebsite/rest/student
+    cmd:
+    curl http://localhost:8080/MyWebsite/rest/student
   
-     from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994","studentDOJ":"20/03/2020"},
-      {"studentno":1,"studentName":"Shilpa","studentDOB":"08/07/1997","studentDOJ":"04/02/2021"}]
+       from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994","studentDOJ":"20/03/2020"},
+       {"studentno":1,"studentName":"Shilpa","studentDOB":"08/07/1997","studentDOJ":"04/02/2021"}]
   
-  2....Code RESTful API method for Retrieval (get a specific item):
+    2....Code RESTful API method for Retrieval (get a specific item):
   
-      @GET
-      @Path("{studentno}")
-      @Produces(MediaType.APPLICATION_JSON)
-      public Response get(@PathParam("studentno") int studentno) {
-            Student student = dao.get(studentno);
+        @GET
+        @Path("{studentno}")
+        @Produces(MediaType.APPLICATION_JSON)
+        public Response get(@PathParam("studentno") int studentno) {
+               Student student = dao.get(studentno);
           if (student != null) {
               return Response.ok(student, MediaType.APPLICATION_JSON).build();
         } else {
@@ -259,26 +257,26 @@
         }
     }
   
- OUTPUT:
+  OUTPUT:
       cmd:
-    curl http://localhost:8080/MyWebsite/rest/student/1
+      curl http://localhost:8080/MyWebsite/rest/student/1
    
-   from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994"}]
+      from server: [{"studentno":1,"studentName":"Rashmi","studentDOB":"15/05/1994"}]
   
   3....Code RESTful API method for Create (add a new student):
   
-     @POST
-     @Consumes(MediaType.APPLICATION_JSON)
-     public  Response add(Student student) throws URISyntaxException {
-	    int newStudentNo =dao.add(student);
-	     URI uri = new URI("/student/" + newStudentNo);
-	    return Response.created(uri).build();
-   }
+      @POST
+      @Consumes(MediaType.APPLICATION_JSON)
+      public  Response add(Student student) throws URISyntaxException {
+	     int newStudentNo =dao.add(student);
+	      URI uri = new URI("/student/" + newStudentNo);
+	     return Response.created(uri).build();
+    }
   
-  OUTPUT:
-    curl -v -X POST -H "Content-Type: application/json"
-     -d  "{\"studentName\":\"Snehal\",\"studentDOB\":\"20/03/1995\",\"studentDOJ\":\"20/02/2019\"}"
-    http://localhost:8080/MyWebsite/rest/Student/
+   OUTPUT:
+      curl -v -X POST -H "Content-Type: application/json"
+      -d  "{\"studentName\":\"Snehal\",\"studentDOB\":\"20/03/1995\",\"studentDOJ\":\"20/02/2019\"}"
+     http://localhost:8080/MyWebsite/rest/Student/
 
   HTTP/1.1 201
   Location: http://localhost:8080/student/3
@@ -287,115 +285,116 @@
   
   4....Code RESTful API method for Update (update an existing student):
   
-     @PUT
-     @Consumes(MediaType.APPLICATION_JSON)
-     @Path("{studentno}")
-     public Response update(@PathParam("studentno") int studentno, Student student) {
-           student.setStudentno(studentno);
-         if (dao.update(student)) {
+      @PUT
+      @Consumes(MediaType.APPLICATION_JSON)
+      @Path("{studentno}")
+      public Response update(@PathParam("studentno") int studentno, Student student) {
+            student.setStudentno(studentno);
+          if (dao.update(student)) {
             return Response.ok().build();
-        } else {
-           return Response.notModified().build();
+         } else {
+            return Response.notModified().build();
        }
    }
   
    OUTPUT:
-  curl -v -X PUT -H "Content-Type: application/json"
+   curl -v -X PUT -H "Content-Type: application/json"
     -d  "      {\"studentName\":\"Rohit\",\"studentDOB\":\"05/03/1998\",\"studentDOJ\":\"20/02/2019\"}"
    http://localhost:8080/MyWebsite/rest/Student/3
   
    HTTP/1.1 200
   Content-Length: 0
   
+  
   5....Code RESTful API method for Delete (remove an Student):
   
-    @DELETE
-    @Path("{studentno}")
-    public Response delete(@PathParam("studentno") int studentno) {
-       if (dao.delete(studentno)) {
-           return Response.ok().build();
-       } else {
-           return Response.notModified().build();
+      @DELETE
+      @Path("{studentno}")
+      public Response delete(@PathParam("studentno") int studentno) {
+          if (dao.delete(studentno)) {
+             return Response.ok().build();
+         } else {
+             return Response.notModified().build();
        }
    }
   
- OUTPUT:
+   OUTPUT:
   
- curl -v -X DELETE http://localhost:8080/MyWebsite/rest/student/1
+   curl -v -X DELETE http://localhost:8080/MyWebsite/rest/student/1
   
   
-  5. Code RESTful Web Services Client Program
+   5. Code RESTful Web Services Client Program
   
-   pom.xml file:
+    pom.xml file:
    
-<dependencies>
+  <dependencies>
 
-<dependency>
+  <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
       <artifactId>jersey-client</artifactId>
       <version>2.29.1</version>
-</dependency>
+  </dependency>
 
-<dependency>
+  <dependency>
       <groupId>org.glassfish.jersey.inject</groupId>
       <artifactId>jersey-hk2</artifactId>
      <version>2.29.1</version>
-  </dependency>
+   </dependency>
 
-<dependency>
+ <dependency>
       <groupId>org.glassfish.jersey.media</groupId>
       <artifactId>jersey-media-json-jackson</artifactId>
       <version>2.29.1</version>
-</dependency>
+  </dependency>
 
-<dependency>
+ <dependency>
      <groupId>org.glassfish.jaxb</groupId>
      <artifactId>jaxb-runtime</artifactId>
       <version>2.3.2</version>
- </dependency>
+  </dependency>
 
 </dependencies>  
 
   
   
 *StudentClient.java
-package net.codejava.client;
+   package net.codejava.client;
 
-import javax.ws.rs.client.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+  import javax.ws.rs.client.*;
+  import javax.ws.rs.core.MediaType;
+  import javax.ws.rs.core.Response;
 
-import org.glassfish.jersey.client.ClientConfig;
+  import org.glassfish.jersey.client.ClientConfig;
  
-public class StudentClient {
+  public class StudentClient {
 
-    private static String baseURI = "http://localhost:8080/MyWebsite/rest/student";
+       private static String baseURI = "http://localhost:8080/MyWebsite/rest/student";
   
-   static WebTarget getWebTarget() {
-    ClientConfig config = new ClientConfig();
-    Client client = ClientBuilder.newClient(config);
+     static WebTarget getWebTarget() {
+      ClientConfig config = new ClientConfig();
+      Client client = ClientBuilder.newClient(config);
       return client.target(baseURI);
  
     }  
-    public static void main(String[] args) {
-      //testList();
-      //testGet();
+     public static void main(String[] args) {
+       //testList();
+        //testGet();
     	//testAdd();
     	//testUpdate();
     	//testDelete();
     	//testList();
+      }
     }
-  }
   
- ** To test listing all Student:**
+   ** To test listing all Student:**
     
-  static void testList() {
-    	WebTarget target = getWebTarget(); 
-    	String response = target.request()
+    static void testList() {
+        	WebTarget target = getWebTarget(); 
+    	       String response = target.request()
          		.accept(MediaType.APPLICATION_JSON)
          		.get(String.class);
          	
-         System.out.println(response);
+          System.out.println(response);
     }
   
   
@@ -414,29 +413,30 @@ public class StudentClient {
   
   **Test to add a new student**
   
-      static void testAdd() {
-    	WebTarget target = getWebTarget();
-        Student student = new Student(3,"Snehal","20/03/1995","20/02/2019");
-       Response response = target.request().post(
+    static void testAdd() {
+        	WebTarget target = getWebTarget();
+               Student student = new Student(3,"Snehal","20/03/1995","20/02/2019");
+               Response response = target.request().post(
         		Entity.entity(student,MediaType.APPLICATION_JSON),
         		Response.class);
        
-        System.out.println(response.getLocation().toString());
-    }
+         System.out.println(response.getLocation().toString());
+       }
   
    **Test to update student**
     
-   private static void testUpdate() {
-    	WebTarget target = getWebTarget();
-        Student student = new Student(3,"Rohit","05/03/1998","12/12/2020");
-         String studentno = "3";
-         Response response = target.path(studentno)
+      private static void testUpdate() {
+         	WebTarget target = getWebTarget();
+               Student student = new Student(3,"Rohit","05/03/1998","12/12/2020");
+               String studentno = "3";
+               Response response = target.path(studentno)
         		 .request()
     	         .put(Entity.entity(student, MediaType.APPLICATION_JSON), Response.class);
-         System.out.println(response);
+            System.out.println(response);
     	}
   
-   **Test to Delete student**
+  
+  **Test to Delete student**
   
   
   	private static void testDelete() {
@@ -448,16 +448,8 @@ public class StudentClient {
 	            .delete(Response.class);
 	    System.out.println(response);      
 
- }
-	
-  
-    static WebTarget getWebTarget() {
-    ClientConfig config = new ClientConfig();
-    Client client = ClientBuilder.newClient(config);
-      return client.target(baseURI);
- 
-    }
-}
+       }
+   }
 
   
 
